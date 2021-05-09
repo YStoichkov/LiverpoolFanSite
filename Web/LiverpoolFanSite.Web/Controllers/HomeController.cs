@@ -24,5 +24,20 @@
             return this.View(
                 new ErrorViewModel { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Anfield()
+        {
+            return this.View();
+        }
+
+        public IActionResult Shop()
+        {
+            return this.View();
+        }
+
+        public IActionResult Gallery()
+        {
+            return this.View();
+        }
     }
 }

@@ -1,35 +1,48 @@
-﻿       <section class="page-section" id="contact">
+﻿@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+@model LiverpoolFanSite.Web.ViewModels.Contacts.ContactFormViewModel 
+@{ 
+    this.ViewData["Title"] = "Send Us A Message";
+}
+
+<section class="page-section" id="contact">
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Contact Us</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
         </div>
-        <form id="contactForm" name="sentMessage" novalidate="novalidate">
+        <form id="contactForm" method="post">
             <div class="row align-items-stretch mb-5">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input class="form-control" id="name" type="text" placeholder="Your Name *" required="required" data-validation-required-message="Please enter your name." />
+                        <label asp-for="Name" style="color:white"></label>
+                        <input class="form-control" asp-for="Name" />
                         <p class="help-block text-danger"></p>
+                        <span asp-validation-for="Email" class="text-dange"></span>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" id="email" type="email" placeholder="Your Email *" required="required" data-validation-required-message="Please enter your email address." />
+                        <label asp-for="Email" style="color:white"></label>
+                        <input class="form-control" asp-for="Email" value="@this.User.Identity.Name"/>
                         <p class="help-block text-danger"></p>
+                        <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <div class="form-group mb-md-0">
-                        <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" required="required" data-validation-required-message="Please enter your phone number." />
+                        <label asp-for="Title" style="color:white"></label>
+                        <input class="form-control" asp-for="Title"/>
                         <p class="help-block text-danger"></p>
+                        <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group form-group-textarea mb-md-0">
-                        <textarea class="form-control" id="message" placeholder="Your Message *" required="required" data-validation-required-message="Please enter a message."></textarea>
+                        <label asp-for="Message" style="color:white"></label>
+                        <textarea class="form-control" asp-for="Message"></textarea>
                         <p class="help-block text-danger"></p>
+                        <span asp-validation-for="Message" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="text-center">
                 <div id="success"></div>
-                <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Send Message</button>
+                <button class="btn btn-primary btn-xl text-uppercase" type="submit">Send Message</button>
             </div>
         </form>
     </div>
