@@ -32,6 +32,10 @@
 
         public int Goals { get; set; }
 
+        public string AddedByUserId { get; set; }
+
+        public virtual ApplicationUser AddedByUser { get; set; }
+
         public virtual ICollection<Image> Images { get; set; }
     }
 }

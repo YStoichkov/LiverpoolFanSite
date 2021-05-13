@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\LiverpoolFanSite.Data.Common\LiverpoolFanSite.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\LiverpoolFanSite.Data.Models\LiverpoolFanSite.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\LiverpoolFanSite.Web.ViewModels\LiverpoolFanSite.Web.ViewModels.csproj" />
     <ProjectReference Include="..\LiverpoolFanSite.Services.Mapping\LiverpoolFanSite.Services.Mapping.csproj" />
   </ItemGroup>
 
