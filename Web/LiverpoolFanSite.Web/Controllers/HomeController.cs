@@ -39,5 +39,10 @@
         {
             return this.View();
         }
+
+        public IActionResult History()
+        {
+            return this.View();
+        }
     }
 }

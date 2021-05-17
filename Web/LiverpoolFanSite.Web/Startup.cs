@@ -56,6 +56,14 @@
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddSingleton(this.configuration);
+            services.AddSignalR();
+
+            // services.AddDistributedSqlServerCache(options =>
+            //  {
+            //    options.ConnectionString = this.configuration.GetConnectionString("DefaultConnection");
+            //    options.SchemaName = "dbo";
+            //    options.TableName = "CacheRecords";
+            // });
 
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
