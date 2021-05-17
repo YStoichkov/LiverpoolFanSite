@@ -20,7 +20,7 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Email" style="color:white"></label>
-                        <input class="form-control" asp-for="Email"/>
+                        <input class="form-control" asp-for="Email" value="@this.User.Identity.Name"/>
                         <p class="help-block text-danger"></p>
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>

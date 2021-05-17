@@ -2,18 +2,24 @@
 {
     using System.Threading.Tasks;
 
+    using LiverpoolFanSite.Common;
     using LiverpoolFanSite.Data.Common.Repositories;
     using LiverpoolFanSite.Data.Models;
+    using LiverpoolFanSite.Services.Messaging;
     using LiverpoolFanSite.Web.ViewModels.Contacts;
     using Microsoft.AspNetCore.Mvc;
 
     public class ContactsController : Controller
     {
         private readonly IRepository<ContactForm> contactsRepository;
+        private readonly IEmailSender emailSender;
 
-        public ContactsController(IRepository<ContactForm> contactsRepository)
+        public ContactsController(
+            IRepository<ContactForm> contactsRepository,
+            IEmailSender emailSender)
         {
             this.contactsRepository = contactsRepository;
+            this.emailSender = emailSender;
         }
 
         public IActionResult Index()
@@ -39,7 +45,19 @@
             await this.contactsRepository.AddAsync(contactForm);
             await this.contactsRepository.SaveChangesAsync();
 
+            await this.emailSender.SendEmailAsync(
+                viewModel.Email,
+                viewModel.Name,
+                GlobalConstants.SystemEmail,
+                viewModel.Title,
+                viewModel.Message);
+
             return this.RedirectToAction("ThankYou");
+        }
+
+        public IActionResult ThankYou()
+        {
+            return this.View();
         }
     }
 }
