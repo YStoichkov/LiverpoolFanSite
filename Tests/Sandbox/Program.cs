@@ -5,6 +5,7 @@
     using System.IO;
     using System.Threading.Tasks;
 
+    using CommandLine;
     using LiverpoolFanSite.Data;
     using LiverpoolFanSite.Data.Common;
     using LiverpoolFanSite.Data.Common.Repositories;
@@ -13,9 +14,6 @@
     using LiverpoolFanSite.Data.Seeding;
     using LiverpoolFanSite.Services.Data;
     using LiverpoolFanSite.Services.Messaging;
-
-    using CommandLine;
-
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
