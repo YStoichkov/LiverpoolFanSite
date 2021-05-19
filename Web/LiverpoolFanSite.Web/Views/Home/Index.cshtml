@@ -6,6 +6,10 @@
 <section class="page-section bg-light" id="portfolio">
     <div class="container">
         <div class="text-center">
+            @if (this.User.Identity.IsAuthenticated)
+            {
+                <h1><font face="Brush Script MT" size="+7">Hello, @this.User.Identity.Name</font></h1>
+            }
             <a href="https://www.liverpoolfc.com/hillsborough"><img src="/assets/img/never-forgotten-title.png" class="center" /></a>
             <br />
             <br />
@@ -81,7 +85,7 @@
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                         </div>
-                        <img class="img-fluid" src="assets/img/portfolio/sponsors.jpg"/>
+                        <img class="img-fluid" src="assets/img/portfolio/sponsors.jpg" />
                     </a>
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">Club Official Sponsors</div>
