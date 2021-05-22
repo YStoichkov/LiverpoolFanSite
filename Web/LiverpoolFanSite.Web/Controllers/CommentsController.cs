@@ -5,6 +5,7 @@
     using LiverpoolFanSite.Data.Models;
     using LiverpoolFanSite.Services.Data;
     using LiverpoolFanSite.Web.ViewModels.Comments;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,7 @@
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(CreateCommentInputModel inputModel)
         {
             var parentId = inputModel.ParentId == 0 ? (int?)null : inputModel.ParentId;

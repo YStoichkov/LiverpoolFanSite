@@ -30,8 +30,6 @@
                             </div>
                         </div>
                         <div class="text-muted small text-center">
-                            <span class="d-none d-sm-inline-block"><i class="far fa-eye"></i> 19</span>
-                            <span><i class="far fa-comment ml-2"></i> 3</span>
                         </div>
                     </div>
                     <div class="px-4 pt-3">
@@ -64,9 +62,11 @@
                 </div>
             </div>
             <div class="px-4 pt-3">
-                <button class="btn btn-primary" onclick="reply(0)" f><i class="fa fa-plus"></i>  Reply</button>
+                @if (this.User.Identity.IsAuthenticated)
+                {
+                    <button class="btn btn-primary" onclick="reply(0)" f><i class="fa fa-plus"></i>  Reply</button>
+                }
             </div>
-            @*@{ DisplayComments(null);}*@
         </div>
     </div>
 
@@ -87,7 +87,10 @@
                             <textarea name="Content" id="Content" class="form-control" rows="10"></textarea>
                         </div>
                         <div class="px-4 pt-3">
-                            <button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i>  Reply</button>
+                            @if (this.User.Identity.IsAuthenticated)
+                            {
+                                <button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i>  Reply</button>
+                            }
                         </div>
                     </div>
                 </div>
