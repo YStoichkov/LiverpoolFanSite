@@ -1,0 +1,120 @@
+﻿@model IEnumerable<LiverpoolFanSite.Data.Models.Player>
+
+@{
+    ViewData["Title"] = "All Players";
+}
+
+<h1 class="text-sm-center" style="padding:15px ;">@this.ViewData["Title"]</h1>
+
+<p class="text-sm-center">
+    <button class="btn btn-primary" asp-action="Create">Create New Player</button>
+</p>
+<table class="table table-bordered table-dark table-sm table-hover" style="margin-left:-120px; margin-right:auto">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShirtNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlaceOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Signed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Appearances)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Goals)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddedByUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeletedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedOn)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShirtNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaceOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Signed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Appearances)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Goals)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddedByUser.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsDeleted)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeletedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedOn)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
