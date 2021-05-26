@@ -32,7 +32,7 @@
 
         public IActionResult Shop()
         {
-            return this.View();
+            return this.Redirect("https://store.liverpoolfc.com/");
         }
 
         public IActionResult Gallery()

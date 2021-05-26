@@ -1,8 +1,6 @@
 ﻿@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
-@model LiverpoolFanSite.Web.ViewModels.Contacts.ContactFormViewModel 
-@{ 
-    this.ViewData["Title"] = "Send Us A Message";
-}
+@model LiverpoolFanSite.Web.ViewModels.Contacts.ContactFormViewModel
+@{ this.ViewData["Title"] = "Send Us A Message"; }
 <hr />
 <section class="page-section" id="contact">
     <div class="container">
@@ -20,13 +18,13 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Email" style="color:white"></label>
-                        <input class="form-control" asp-for="Email" value="@this.User.Identity.Name"/>
+                        <input class="form-control" asp-for="Email"/>
                         <p class="help-block text-danger"></p>
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <div class="form-group mb-md-0">
                         <label asp-for="Title" style="color:white"></label>
-                        <input class="form-control" asp-for="Title"/>
+                        <input class="form-control" asp-for="Title" />
                         <p class="help-block text-danger"></p>
                         <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
@@ -42,12 +40,12 @@
             </div>
             <div class="text-center">
                 <div id="success"></div>
-                <button class="btn btn-primary btn-xl text-uppercase" type="submit">Send Message</button>
+                <button class="btn btn-primary btn-xl text-uppercase" type="submit" onclick="sendEMail">Send Message</button>
             </div>
         </form>
     </div>
 </section>
 
 @*<script>
-    document.getElementsByClassName('masthead')[0].style.display = 'none';
-</script>*@
+        document.getElementsByClassName('masthead')[0].style.display = 'none';
+    </script>*@
