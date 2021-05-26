@@ -1,0 +1,22 @@
+﻿@model LiverpoolFanSite.Web.ViewModels.News.SingleNewsViewModel;
+
+<hr />
+<a href="#" class="btn btn-info btn-sm mb-3 has-icon" data-toggle="collapse" data-target=".forum-content" onclick="goBack()"><i class="fa fa-arrow-left mr-2"></i>Back</a>
+
+<div class="timeline-image"><img class="rounded-circle img-fluid" src="@Model.ImageUrl" style="float:left" /></div>
+<div class="timeline-panel">
+    <div class="timeline-heading">
+        <h1 style="color:black">@Model.Title</h1>
+        <h4 class="subheading">@Model.CreatedOn.ToShortDateString()</h4>
+    </div>
+    <hr />
+    <div class="timeline-body">
+        <p>@Model.Content</p>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>

@@ -1,0 +1,31 @@
+﻿@model LiverpoolFanSite.Web.ViewModels.News.NewsListViewModel
+@{
+    this.ViewData["Title"] = "News page "+ Model.PageNumber;
+}
+
+<section class="page-section bg-light" id="news">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Latest News</h2>
+            <br />
+        </div>
+        <ul class="timeline">
+            @foreach (var news in this.Model.News)
+            {
+                <li>
+                    <div class="timeline-image">
+                    <img class="mx-auto rounded-circle" src="@news.ImageUrl" width="100"  alt="" /></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4><a asp-action="ById" asp-route-id="@news.Id"/>@news.Title</h4>
+                            <h5>@news.CreatedOn</h5>
+                        </div>
+                        <div class="timeline-body"><p class="text-muted">@news.Content</p></div>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</section>
+
+<partial name="_PaggingPartial" model="@Model" />

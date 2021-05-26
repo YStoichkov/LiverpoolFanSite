@@ -70,8 +70,8 @@
 
         public IActionResult ById(int id)
         {
-            var recipe = this.playersService.GetById<SinglePlayerViewModel>(id);
-            return this.View(recipe);
+            var player = this.playersService.GetById<SinglePlayerViewModel>(id);
+            return this.View(player);
         }
     }
 }

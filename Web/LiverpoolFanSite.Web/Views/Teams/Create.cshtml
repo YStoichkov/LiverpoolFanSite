@@ -60,23 +60,8 @@
     <input asp-for="Signed" class="form-control" />
     <span asp-validation-for="Signed" class="text-danger"></span>
 </div>
-    @*<div id="IngredientsContainer">
-            <label asp-for="Ingredients"></label>
-            <a class="btn btn-success" onclick="AddMoreIngredients()">+</a>
-        </div>*@
     <hr />
     <input type="submit" class="btn btn-primary" />
     <hr />
     <hr />
 </form>
-
-@*@section Scripts {
-    <script>
-        var ingredientIndex = 0;
-        function AddMoreIngredients() {
-            $("#IngredientsContainer").
-                append("<div class='form-control'>Name: <input type='text' name='Ingredients[" + ingredientIndex + "].IngredientName' /> Quantity: <input type='text' name='Ingredients[" + ingredientIndex + "].Quantity' /></div>");
-            ingredientIndex++;
-        }
-    </script>
-}*@

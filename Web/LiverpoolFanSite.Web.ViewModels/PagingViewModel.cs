@@ -18,6 +18,8 @@
 
         public int PlayersCount { get; set; }
 
+        public int NewsCount { get; set; }
+
         public int ItemsPerPage { get; set; }
     }
 }
