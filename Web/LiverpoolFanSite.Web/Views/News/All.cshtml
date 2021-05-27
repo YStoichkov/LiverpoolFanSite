@@ -1,8 +1,16 @@
-﻿@model LiverpoolFanSite.Web.ViewModels.News.NewsListViewModel
+﻿@using LiverpoolFanSite.Common
+@model LiverpoolFanSite.Web.ViewModels.News.NewsListViewModel
 @{
-    this.ViewData["Title"] = "News page "+ Model.PageNumber;
+    this.ViewData["Title"] = "News page " + Model.PageNumber;
 }
 
+@if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+{
+    <div class="text-xl-center" style="padding:20px">
+        <a asp-controller="News" asp-action="Create" class="btn btn-primary btn-lg">Add News</a>
+    </div>
+
+}
 <section class="page-section bg-light" id="news">
     <div class="container">
         <div class="text-center">
@@ -14,11 +22,12 @@
             {
                 <li>
                     <div class="timeline-image">
-                    <img class="mx-auto rounded-circle" src="@news.ImageUrl" width="100"  alt="" /></div>
+                        <img class="mx-auto rounded-circle" src="@news.ImageUrl" width="100" alt="" />
+                    </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
-                            <h4><a asp-action="ById" asp-route-id="@news.Id"/>@news.Title</h4>
-                            <h5>@news.CreatedOn</h5>
+                            <a asp-action="ById" asp-route-id="@news.Id"><h4>@news.Title</h4></a>
+                            <h5><i class="fas fa-calendar-alt"></i> @news.CreatedOn</h5>
                         </div>
                         <div class="timeline-body"><p class="text-muted">@news.Content</p></div>
                     </div>

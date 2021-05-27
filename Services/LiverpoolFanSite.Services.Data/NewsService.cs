@@ -58,7 +58,7 @@
         public IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 12)
         {
             var news = this.newsRepository.AllAsNoTracking()
-               .OrderBy(x => x.CreatedOn)
+               .OrderByDescending(x => x.CreatedOn)
                .Skip((page - 1) * itemsPerPage).Take(itemsPerPage)
                .To<T>().ToList();
             return news;

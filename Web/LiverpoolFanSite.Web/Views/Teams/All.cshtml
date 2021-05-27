@@ -1,7 +1,14 @@
-﻿@model LiverpoolFanSite.Web.ViewModels.Players.PlayersListViewModel
+﻿@using LiverpoolFanSite.Common
+@model LiverpoolFanSite.Web.ViewModels.Players.PlayersListViewModel
 
 @{
     this.ViewData["Title"] = "First Team Players  , page "; /*+ Model.PageNumber;*/
+}
+@if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+{
+    <div class="text-xl-center" style="padding:20px">
+        <a asp-controller="Teams" asp-action="Create" class="btn btn-primary btn-lg">Add Player</a>
+    </div>
 }
 <section class="page-section bg-light" id="team">
     <div class="container">
