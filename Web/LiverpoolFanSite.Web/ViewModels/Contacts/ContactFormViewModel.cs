@@ -4,6 +4,7 @@
 
     using LiverpoolFanSite.Data.Models;
     using LiverpoolFanSite.Services.Mapping;
+    using LiverpoolFanSite.Web.Infrastructure;
 
     public class ContactFormViewModel : IMapFrom<ContactForm>
     {
@@ -22,5 +23,8 @@
         [Required(ErrorMessage ="Please enter the content of your message")]
         [Display(Name ="Content")]
         public string Message { get; set; }
+
+        [GoogleReCaptchaValidation]
+        public string RecaptchaValue { get; set; }
     }
 }
