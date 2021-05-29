@@ -5,5 +5,7 @@
     public class PlayersListViewModel : PagingViewModel
     {
         public IEnumerable<PlayersInListViewModel> Players { get; set; }
+
+        public string SearchTerm { get; set; }
     }
 }

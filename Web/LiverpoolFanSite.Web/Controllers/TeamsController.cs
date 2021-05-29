@@ -73,5 +73,16 @@
             var player = this.playersService.GetById<SinglePlayerViewModel>(id);
             return this.View(player);
         }
+
+        public IActionResult Search(string searchTerm)
+        {
+            var player = this.playersService.Search<SinglePlayerViewModel>(searchTerm);
+            if (player==null)
+            {
+                return this.RedirectToAction("All");
+            }
+
+            return this.View(player);
+        }
     }
 }

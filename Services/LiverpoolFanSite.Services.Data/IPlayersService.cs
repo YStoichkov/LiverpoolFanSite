@@ -14,5 +14,7 @@
         int GetCount();
 
         T GetById<T>(int id);
+
+        T Search<T>(string search);
     }
 }

@@ -4,6 +4,13 @@
 @{
     this.ViewData["Title"] = "First Team Players  , page "; /*+ Model.PageNumber;*/
 }
+<form method="get" asp-controller="Teams" asp-action="Search">
+    <div class="input-group" style="padding:20px">
+        <input asp-for="SearchTerm" type="text" class="form-control rounded" placeholder="Search..."/>
+        <button type="submit" class="btn btn-dark">Search player</button>
+    </div>
+</form>
+
 @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
 {
     <div class="text-xl-center" style="padding:20px">
@@ -26,9 +33,6 @@
                     </div>
                 </div>
             }
-        </div>
-        <div class="row">
-            <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
         </div>
     </div>
 </section>

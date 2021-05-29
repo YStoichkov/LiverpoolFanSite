@@ -83,5 +83,11 @@
         {
             return this.playerRepository.All().Count();
         }
+
+        public T Search<T>(string search)
+        {
+            var player = this.playerRepository.AllAsNoTracking().Where(x => x.FirstName == search).To<T>().FirstOrDefault();
+            return player;
+        }
     }
 }

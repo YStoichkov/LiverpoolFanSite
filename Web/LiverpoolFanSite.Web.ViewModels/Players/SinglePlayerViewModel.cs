@@ -27,6 +27,8 @@
 
         public string Description { get; set; }
 
+        public string SearchTerm { get; set; }
+
         public string Signed { get; set; }
 
         public int Appearances { get; set; }
