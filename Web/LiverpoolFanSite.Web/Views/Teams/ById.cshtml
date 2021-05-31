@@ -1,6 +1,8 @@
 ﻿@model LiverpoolFanSite.Web.ViewModels.Players.SinglePlayerViewModel;
 
 <hr />
+<a href="#" class="btn btn-info btn-sm mb-3 has-icon" data-toggle="collapse" data-target=".forum-content" onclick="goBack()"><i class="fa fa-arrow-left mr-2"></i>Back</a>
+
 <div class="timeline-image"><img class="rounded-circle img-fluid" src="@Model.ImageUrl" style="float:left" /></div>
 <div class="timeline-panel">
     <div class="timeline-heading">
@@ -19,3 +21,9 @@
         <p>@Model.Description</p>
     </div>
 </div>
+
+<script>
+    function goBack() {
+        window.history.go(-1);
+    }
+</script>

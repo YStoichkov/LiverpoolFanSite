@@ -86,7 +86,19 @@
 
         public T Search<T>(string search)
         {
-            var player = this.playerRepository.AllAsNoTracking().Where(x => x.FirstName == search).To<T>().FirstOrDefault();
+            var splittedSearch = search.Split(" ");
+
+            // if (splittedSearch.Length == 1)
+            // {
+            //    var player = this.playerRepository.AllAsNoTracking().Where(x => x.FirstName == splittedSearch[0] || x.LastName == splittedSearch[0]).To<T>().FirstOrDefault();
+            //    return player;
+            // }
+            // else
+            // {
+            //    var player = this.playerRepository.AllAsNoTracking().Where(x => x.FirstName == splittedSearch[0] && x.LastName == splittedSearch[1]).To<T>().FirstOrDefault();
+            //    return player;
+            // }
+            var player = this.playerRepository.AllAsNoTracking().Where(x => x.FirstName.Contains(search) || x.LastName.Contains(search)).To<T>().FirstOrDefault();
             return player;
         }
     }

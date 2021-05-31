@@ -11,6 +11,7 @@
     using LiverpoolFanSite.Services.Data;
     using LiverpoolFanSite.Services.Mapping;
     using LiverpoolFanSite.Services.Messaging;
+    using LiverpoolFanSite.Web.Hubs;
     using LiverpoolFanSite.Web.ViewModels;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -69,6 +70,9 @@
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
+            // Add SignalR
+            services.AddSignalR();
+
             // Application services
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGrid:ApiKey"]));
             services.AddTransient<ISettingsService, SettingsService>();
@@ -124,6 +128,7 @@
             app.UseEndpoints(
                 endpoints =>
                     {
+                        endpoints.MapHub<ChatHub>("forum/chathub");
                         endpoints.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                         endpoints.MapControllerRoute("forumCategory", "lfc/{name:minlength(3)}", new { controller = "Forum", action = "ByName" });
                         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");

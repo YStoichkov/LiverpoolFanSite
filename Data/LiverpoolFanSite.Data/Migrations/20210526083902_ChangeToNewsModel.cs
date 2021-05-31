@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace LiverpoolFanSite.Data.Migrations
+﻿namespace LiverpoolFanSite.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class ChangeToNewsModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

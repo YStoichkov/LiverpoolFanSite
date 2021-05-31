@@ -6,8 +6,8 @@
 }
 <form method="get" asp-controller="Teams" asp-action="Search">
     <div class="input-group" style="padding:20px">
-        <input asp-for="SearchTerm" type="text" class="form-control rounded" placeholder="Search..."/>
-        <button type="submit" class="btn btn-dark">Search player</button>
+        <input asp-for="SearchTerm" type="text" class="form-control rounded" placeholder="Search..." />
+        <button type="submit" class="btn btn-dark" id="SearchPlayer">Search player</button>
     </div>
 </form>
 
@@ -39,3 +39,9 @@
 
 <hr />
 <partial name="_PaggingPartial" model="@Model" />
+
+<script>
+    let btn = document.getElementById('SearchPlayer').addEventListener('click', () => {
+        btn.placeholer = "Search...";
+    })
+</script>

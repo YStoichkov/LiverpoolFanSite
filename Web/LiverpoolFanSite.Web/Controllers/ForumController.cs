@@ -5,6 +5,7 @@
     using LiverpoolFanSite.Services.Data;
     using LiverpoolFanSite.Web.ViewModels.Categories;
     using LiverpoolFanSite.Web.ViewModels.Forum;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     public class ForumController : Controller
@@ -38,6 +39,12 @@
             viewModel.PagesCount = (int)Math.Ceiling((double)count / ItemsPerPage);
             viewModel.CurrentPage = page;
             return this.View(viewModel);
+        }
+
+        [Authorize]
+        public IActionResult Chat()
+        {
+            return this.View();
         }
     }
 }

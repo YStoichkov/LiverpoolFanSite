@@ -74,15 +74,16 @@
             return this.View(player);
         }
 
+        // [Route("ById")]
         public IActionResult Search(string searchTerm)
         {
             var player = this.playersService.Search<SinglePlayerViewModel>(searchTerm);
-            if (player==null)
+            if (player == null)
             {
                 return this.RedirectToAction("All");
             }
 
-            return this.View(player);
+            return this.View("ById", player);
         }
     }
 }
