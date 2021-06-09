@@ -40,6 +40,10 @@
 
         public DbSet<Post> Posts { get; set; }
 
+        public DbSet<Team> Teams { get; set; }
+
+        public DbSet<Table> Tables { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

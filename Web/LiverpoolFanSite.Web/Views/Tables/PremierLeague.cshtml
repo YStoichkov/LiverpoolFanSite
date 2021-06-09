@@ -1,6 +1,16 @@
-﻿<link href="~/css/plTable.css" rel="stylesheet" />
+﻿@using LiverpoolFanSite.Common
+@model LiverpoolFanSite.Web.ViewModels.Teams.TeamsListViewModel
+@{ this.ViewData["Title"] = "Premier League Table";
+                var counter = 1; }
+
+<link href="~/css/plTable.css" rel="stylesheet" />
 <hr />
 <h1 class="text-center">Premier League Table</h1>
+@if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+{
+<div class="text-xl-center" style="padding:20px">
+    <a asp-controller="Tables" asp-action="Create" class="btn btn-primary btn-lg">Add Team</a>
+</div>}
 <hr />
 <section class="content-info">
     <div class="container paddings-mini">
@@ -22,246 +32,22 @@
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        <tr>
-                            <td class="text-left number">1 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="/images/premierLeagueBadges/mancity.png"><span>Manchester City</span> </td>
-                            <td>38</td>
-                            <td>26</td>
-                            <td>9</td>
-                            <td>3</td>
-                            <td>73</td>
-                            <td>32</td>
-                            <td>+41</td>
-                            <td>87</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left number">2 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="/images/premierLeagueBadges/manunited.png" alt="Brazil"><span>Manchester United</span> </td>
-                            <td>38</td>
-                            <td>24</td>
-                            <td>7</td>
-                            <td>7</td>
-                            <td>83</td>
-                            <td>38</td>
-                            <td>+45</td>
-                            <td>79</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left number">3 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="/images/premierLeagueBadges/leicester.png"><span>Leicester City</span> </td>
-                            <td>38</td>
-                            <td>22</td>
-                            <td>9</td>
-                            <td>7</td>
-                            <td>71</td>
-                            <td>36</td>
-                            <td>+35</td>
-                            <td>75</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left number">4<i class="fa fa-caret-down" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="/images/premierLeagueBadges/chelsea.png"><span>Chelsea</span> </td>
-                            <td>38</td>
-                            <td>20</td>
-                            <td>10</td>
-                            <td>8</td>
-                            <td>62</td>
-                            <td>37</td>
-                            <td>+25</td>
-                            <td>70</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left number">5 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="/images/premierLeagueBadges/westham.png"><span>West Ham United</span> </td>
-                            <td>38</td>
-                            <td>19</td>
-                            <td>7</td>
-                            <td>12</td>
-                            <td>58</td>
-                            <td>53</td>
-                            <td>+5</td>
-                            <td>64</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left number">6<i class="fa fa-caret-down" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="/images/premierLeagueBadges/liverpool.png"><span>Liverpool</span> </td>
-                            <td>38</td>
-                            <td>18</td>
-                            <td>8</td>
-                            <td>12</td>
-                            <td>52</td>
-                            <td>48</td>
-                            <td>+4</td>
-                            <td>62</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left number">7<i class="fa fa-caret-down" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="/images/premierLeagueBadges/tottenham.png"><span>Tottenham Hotspur</span> </td>
-                            <td>38</td>
-                            <td>18</td>
-                            <td>6</td>
-                            <td>14</td>
-                            <td>54</td>
-                            <td>33</td>
-                            <td>+21</td>
-                            <td>60</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left number">8<i class="fa fa-caret-up" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="/images/premierLeagueBadges/arsenal.png"><span>Arsenal</span> </td>
-                            <td>38</td>
-                            <td>12</td>
-                            <td>11</td>
-                            <td>15</td>
-                            <td>48</td>
-                            <td>50</td>
-                            <td>-2</td>
-                            <td>47</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left number">9 <i class="fa fa-circle" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="/images/premierLeagueBadges/everton.png"><span>Everton</span> </td>
-                            <td>38</td>
-                            <td>26</td>
-                            <td>9</td>
-                            <td>3</td>
-                            <td>73</td>
-                            <td>32</td>
-                            <td>+41</td>
-                            <td>87</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left number">10<i class="fa fa-circle" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="/images/premierLeagueBadges/leeds.png"><span>Leeds United</span> </td>
-                            <td>38</td>
-                            <td>24</td>
-                            <td>7</td>
-                            <td>7</td>
-                            <td>83</td>
-                            <td>38</td>
-                            <td>+45</td>
-                            <td>79</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left number">11 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="/images/premierLeagueBadges/astonvilla.png"><span>Aston Villa</span> </td>
-                            <td>38</td>
-                            <td>26</td>
-                            <td>9</td>
-                            <td>3</td>
-                            <td>73</td>
-                            <td>32</td>
-                            <td>+41</td>
-                            <td>87</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left number">12 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="/images/premierLeagueBadges/wolverhampton.png"><span>Wolverhampton Wanderers</span> </td>
-                            <td>38</td>
-                            <td>26</td>
-                            <td>9</td>
-                            <td>3</td>
-                            <td>73</td>
-                            <td>32</td>
-                            <td>+41</td>
-                            <td>87</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left number">13 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="/images/premierLeagueBadges/crystalpallace.png"><span>Crystal Palace</span> </td>
-                            <td>38</td>
-                            <td>26</td>
-                            <td>9</td>
-                            <td>3</td>
-                            <td>73</td>
-                            <td>32</td>
-                            <td>+41</td>
-                            <td>87</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left number">14 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="/images/premierLeagueBadges/southampton.png"><span>Southampton</span> </td>
-                            <td>38</td>
-                            <td>26</td>
-                            <td>9</td>
-                            <td>3</td>
-                            <td>73</td>
-                            <td>32</td>
-                            <td>+41</td>
-                            <td>87</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left number">15 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="/images/premierLeagueBadges/burnley.png"><span>Burnley</span> </td>
-                            <td>38</td>
-                            <td>26</td>
-                            <td>9</td>
-                            <td>3</td>
-                            <td>73</td>
-                            <td>32</td>
-                            <td>+41</td>
-                            <td>87</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left number">16 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="~/images/premierLeagueBadges/newcastle.png"><span>Newcastle United</span> </td>
-                            <td>38</td>
-                            <td>26</td>
-                            <td>9</td>
-                            <td>3</td>
-                            <td>73</td>
-                            <td>32</td>
-                            <td>+41</td>
-                            <td>87</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left number">17 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="/images/premierLeagueBadges/brighton.png"><span>Brighton and Hove Albion</span> </td>
-                            <td>38</td>
-                            <td>26</td>
-                            <td>9</td>
-                            <td>3</td>
-                            <td>73</td>
-                            <td>32</td>
-                            <td>+41</td>
-                            <td>87</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left number">18 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="/images/premierLeagueBadges/fulham.png"><span>Fulham</span> </td>
-                            <td>38</td>
-                            <td>26</td>
-                            <td>9</td>
-                            <td>3</td>
-                            <td>73</td>
-                            <td>32</td>
-                            <td>+41</td>
-                            <td>87</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left number">19 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="/images/premierLeagueBadges/westbrom.png"><span>West Bromwich Albion</span> </td>
-                            <td>38</td>
-                            <td>26</td>
-                            <td>9</td>
-                            <td>3</td>
-                            <td>73</td>
-                            <td>32</td>
-                            <td>+41</td>
-                            <td>87</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left number">20 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
-                            <td class="text-left"> <img src="/images/premierLeagueBadges/sheffield.png"><span>Sheffield United</span> </td>
-                            <td>38</td>
-                            <td>26</td>
-                            <td>9</td>
-                            <td>3</td>
-                            <td>73</td>
-                            <td>32</td>
-                            <td>+41</td>
-                            <td>87</td>
-                        </tr>
+                        @foreach (var team in this.Model.Teams)
+                        {
+                            <tr>
+                                <td class="text-left number">@counter</td>
+                                <td class="text-left"> <img src="@team.ImageUrl"><span>@team.Name</span></td>
+                                <td>@team.PlayedGames</td>
+                                <td>@team.Wins</td>
+                                <td>@team.Draws</td>
+                                <td>@team.Loses</td>
+                                <td>@team.GoalsScored</td>
+                                <td>@team.GoalsAgainst</td>
+                                <td>@team.Difference</td>
+                                <td>@team.Points</td>
+                            </tr>
+                            counter++;
+                        }
                     </tbody>
                 </table>
             </div>

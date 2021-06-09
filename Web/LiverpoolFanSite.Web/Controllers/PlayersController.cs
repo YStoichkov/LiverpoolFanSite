@@ -11,13 +11,13 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
-    public class TeamsController : Controller
+    public class PlayersController : Controller
     {
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IPlayersService playersService;
         private readonly IWebHostEnvironment environment;
 
-        public TeamsController(
+        public PlayersController(
             UserManager<ApplicationUser> userManager,
             IPlayersService playersService,
             IWebHostEnvironment environment)
