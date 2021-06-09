@@ -22,7 +22,16 @@
 
         connection.on("NewMessage",
             function (message) {
-                var chatInfo = `<div><p>Username: ${message.user}</p> <p>${escapeHtml(message.text)}</p></div>`;
+                if (message.text=='') {
+                    return;
+                }
+                var chatInfo = `
+                        <div class="chat-body clearfix">
+                        <div class="header">
+                        <small class=" text-muted"><i class="far fa-clock"></i> @DateTime.UtcNow</small>.
+                        <br/>
+                        <strong class="pull-right primary-font"><i class="fas fa-user"></i> ${message.user}</strong>
+                        <p class="text-muted">${escapeHtml(message.text)}</p>`;
                 $("#messagesList").append(chatInfo);
             });
 
