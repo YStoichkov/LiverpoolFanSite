@@ -4,7 +4,7 @@
 @{
     this.ViewData["Title"] = "First Team Players  , page "; /*+ Model.PageNumber;*/
 }
-<form method="get" asp-controller="Teams" asp-action="Search">
+<form method="get" asp-controller="Players" asp-action="Search">
     <div class="input-group" style="padding:20px">
         <input asp-for="SearchTerm" type="text" class="form-control rounded" placeholder="Search..." />
         <button type="submit" class="btn btn-dark" id="SearchPlayer">Search player</button>
