@@ -3,6 +3,7 @@
     using System;
     using System.Threading.Tasks;
 
+    using LiverpoolFanSite.Common;
     using LiverpoolFanSite.Data.Models;
     using LiverpoolFanSite.Services.Data;
     using LiverpoolFanSite.Web.ViewModels.News;
@@ -32,12 +33,13 @@
             return this.View();
         }
 
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public IActionResult Create()
         {
             return this.View();
         }
 
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         [HttpPost]
         public async Task<IActionResult> Create(CreateNewsInputModel input)
         {

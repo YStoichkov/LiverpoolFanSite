@@ -44,6 +44,8 @@
 
         public DbSet<Table> Tables { get; set; }
 
+        public DbSet<StadiumTour> StadiumTours { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

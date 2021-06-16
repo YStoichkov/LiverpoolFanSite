@@ -1,0 +1,83 @@
+﻿@using LiverpoolFanSite.Data.Models.Enums
+@using Microsoft.AspNetCore.Mvc.ViewFeatures
+@model LiverpoolFanSite.Web.ViewModels.StadiumTours.StadiumTourInputModel;
+@{
+    this.ViewData["Title"] = "Anfield Stadium Tours";
+}
+<div>
+    <h1 class="text-lg-center" style="padding:5px ; font-size:100px"><font face="Brush Script MT">@this.ViewData["Title"]</font></h1>
+    <h1 class="text-md-center" style="padding:5px; font-size:50px"><font face="Brush Script MT">Book your tour now</font></h1>
+
+    <form method="post" class="col-md-6 offset-md-3" enctype="multipart/form-data">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="TourType" style="color:darkblue">Tour Type: </label>
+            <select asp-for="TourType" asp-items="@Html.GetEnumSelectList<StadiumTourType>()" class="form-control"></select>
+            <span asp-validation-for="TourType" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="TourDate" style="color:darkblue">Tour Date: </label>
+            <input asp-for="TourDate" id="tourDate" />
+            <span asp-validation-for="TourType" class="text-danger"></span>
+        </div><div class="form-group">
+            <label asp-for="Tickets" style="color:darkblue">Tickets: </label>
+            <input asp-for="Tickets" id="tickets" />
+            <span asp-validation-for="Tickets" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="TotalPriceForTour" style="color:darkblue">Total: </label>
+            <input asp-for="TotalPriceForTour" id="totalTicketsPrice" />
+        </div>
+        <div class="form-group">
+            <label style="color:darkblue">Email for confirmation: </label>
+            <input placeholder="@this.User.Identity.Name" />
+        </div>
+        <div>
+            <p>Book more than <b>5</b> tickets and get <b>10% off</b></p>
+        </div>
+        <div class="text-center">
+            <input type="submit" class="btn btn-primary" value="Book Tour" id="submitBtn" />
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <script>
+        var today = new Date().toISOString().split('T')[0];
+        document.getElementById("tourDate").setAttribute('min', today);
+
+
+        let tickets = document.getElementById('tickets');
+        let btn = document.getElementById('submitBtn');
+        let ticketPrice = 20;
+        let totalPrice = 0;
+        let discount = 0;
+        tickets.addEventListener('change', (e) => {
+            console.log(document.getElementById('tourDate').value)
+            if (tickets.value != 0) {
+                if (tickets.value > 5) {
+                    discount = ticketPrice * 0.1;
+                    totalPrice = Math.round((ticketPrice - discount) * tickets.value)
+                }
+                else {
+                    totalPrice = ticketPrice * tickets.value
+                }
+                tickets.style.removeProperty('border');
+                btn.value = `Book Tour: ${totalPrice} £`;
+            }
+            if (tickets.value == 0) {
+                totalPrice = 0;
+                btn.value = `Book Tour`;
+                tickets.style.removeProperty('border');
+            }
+            if (tickets.value < 0) {
+                tickets.style.setProperty('border', '2px solid red')
+                totalPrice = 0;
+                btn.value = `Book Tour`;
+            }
+            document.getElementById('totalTicketsPrice').value = `${totalPrice} £`
+        })
+    </script>
+}
+
+
