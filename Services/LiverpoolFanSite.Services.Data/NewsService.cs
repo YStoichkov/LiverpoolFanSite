@@ -13,7 +13,7 @@
 
     public class NewsService : INewsService
     {
-        private readonly string[] allowedExtensions = new[] { "jpg", "png", "gif" };
+        private readonly string[] allowedExtensions = new[] { "jpg", "png", "gif", "jpeg" };
         private readonly IDeletableEntityRepository<News> newsRepository;
 
         public NewsService(IDeletableEntityRepository<News> newsRepository)

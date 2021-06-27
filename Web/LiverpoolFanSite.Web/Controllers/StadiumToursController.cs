@@ -42,7 +42,12 @@
             await this.stadiumTourRepository.AddAsync(stadiumTour);
             await this.stadiumTourRepository.SaveChangesAsync();
 
-            return this.Redirect("/");
+            return this.RedirectToAction("TourConfirmation");
+        }
+
+        public IActionResult TourConfirmation()
+        {
+            return this.View();
         }
     }
 }

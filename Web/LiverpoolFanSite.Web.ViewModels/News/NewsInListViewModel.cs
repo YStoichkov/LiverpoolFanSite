@@ -2,6 +2,8 @@
 {
     using System;
     using System.Linq;
+    using System.Net;
+    using System.Text.RegularExpressions;
 
     using AutoMapper;
     using LiverpoolFanSite.Data.Models;
@@ -14,6 +16,17 @@
         public string Title { get; set; }
 
         public string Content { get; set; }
+
+        public string ShortContent
+        {
+            get
+            {
+                var content = WebUtility.HtmlDecode(Regex.Replace(this.Content, @"<[^>]+>", string.Empty));
+                return content.Length > 75
+                        ? content.Substring(0, 75) + "..."
+                        : content;
+            }
+        }
 
         public DateTime CreatedOn { get; set; }
 

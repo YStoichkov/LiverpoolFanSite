@@ -29,8 +29,9 @@
             <input asp-for="TotalPriceForTour" id="totalTicketsPrice" />
         </div>
         <div class="form-group">
-            <label style="color:darkblue">Email for confirmation: </label>
-            <input placeholder="@this.User.Identity.Name" />
+            <label asp-for="Email" style="color:darkblue">Email for confirmation: </label>
+            <input asp-for="Email" placeholder="@this.User.Identity.Name" />
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div>
             <p>Book more than <b>5</b> tickets and get <b>10% off</b></p>
@@ -75,7 +76,7 @@
                 totalPrice = 0;
                 btn.value = `Book Tour`;
             }
-            document.getElementById('totalTicketsPrice').value = `${totalPrice} £`
+            document.getElementById('totalTicketsPrice').value = `${totalPrice}`
         })
     </script>
 }

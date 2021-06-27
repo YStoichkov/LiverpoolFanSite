@@ -3,15 +3,17 @@
 <hr />
 <a href="#" class="btn btn-info btn-sm mb-3 has-icon" data-toggle="collapse" data-target=".forum-content" onclick="goBack()"><i class="fa fa-arrow-left mr-2"></i>Back</a>
 
-<div class="timeline-image"><img class="rounded-circle img-fluid" src="@Model.ImageUrl" style="float:left" /></div>
-<div class="timeline-panel">
-    <div class="timeline-heading">
-        <h1 style="color:black">@Model.Title</h1>
-        <h4 class="subheading"><i class="fas fa-calendar-alt"></i> @Model.CreatedOn</h4>
-    </div>
-    <hr />
-    <div class="timeline-body">
-        <p>@Model.Content</p>
+<div class="timeline-image">
+    <img class="rounded img-fluid" src="@Model.ImageUrl " style="float:left" />
+    <div class="timeline-panel">
+        <div class="timeline-heading">
+            <h1 class="text-xl-right"style="color:black">@Model.Title</h1>
+            <p class="subheading text-sm-right"><i class="fas fa-calendar-alt"></i> @Model.CreatedOn</p>
+        </div>
+        <hr />
+        <div class="timeline-body">
+            <p class="text-sm-right">@Model.Content</p>
+        </div>
     </div>
 </div>
 
