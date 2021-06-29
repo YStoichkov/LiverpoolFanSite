@@ -1,0 +1,78 @@
+﻿@model LiverpoolFanSite.Web.ViewModels.Images.AllImagesViewModel
+@{
+    var counter = 1;
+}
+
+<link href="~/css/gallery.css" rel="stylesheet" />
+<body>
+    <h1 style="text-align:center; padding:15px"><font face="Brush Script MT" size="+7">LFC Gallery</font></h1>
+
+    @if (this.User.Identity.IsAuthenticated)
+    {
+        <div class="text-xl-center" style="padding:20px">
+            <a asp-controller="Gallery" asp-action="UploadImage" class="btn btn-primary btn-lg">Add Images</a>
+        </div>
+    }
+    <div class="container">
+        @foreach (var image in this.Model.RemoteImageUrl)
+        {
+            <div class="mySlides">
+                <div class="numbertext" style="color:black ; font-weight: bold">@counter / @this.Model.RemoteImageUrl.Count</div>
+                <img src="@image.ToString()" style="width:100%;">
+            </div>
+            counter++;
+        }
+
+        <a class="prev" onclick="plusSlides(-1)" style="color:black"><i class="fas fa-angle-double-left" style="color:black"></i><font face="Brush Script MT" size="+3"> Back </font></a>
+        <a class="next" onclick="plusSlides(1)" style="color:black"><font face="Brush Script MT" size="+3"> Next </font><i class="fas fa-angle-double-right" style="color:black"></i></a>
+
+        <div class="caption-container">
+            <p id="caption"></p>
+        </div>
+
+        <div class="row">
+            @foreach (var image in this.Model.RemoteImageUrl)
+            {
+                <div class="column">
+                    <img class="demo cursor" src="@image.ToString()" style="width:100%" onclick="currentSlide(1)">
+                </div>
+            }
+        </div>
+    </div>
+
+</body>
+@section Scripts {
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("demo");
+            var captionText = document.getElementById("caption");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            captionText.innerHTML = dots[slideIndex - 1].alt;
+        }
+    </script>
+
+}
+
+

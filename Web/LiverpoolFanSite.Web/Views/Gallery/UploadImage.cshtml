@@ -1,0 +1,15 @@
+﻿@model LiverpoolFanSite.Web.ViewModels.Images.UploadImageViewModel
+
+<div class="flex-wrap text-xl-center">
+    <h1 class="text-muted" style="padding:10px"><font face="Brush Script MT" size="+6">Upload images to the Gallery</font></h1>
+
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Image"><font face="Brush Script MT" size="+2">Image</font></label>
+            <input asp-for="Image" class="form-control" />
+            <span asp-validation-for="Image" class="text-danger"></span>
+
+            <input type="submit" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

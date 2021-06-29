@@ -2,6 +2,7 @@
 {
     using System.Reflection;
 
+    using CloudinaryDotNet;
     using LiverpoolFanSite.Data;
     using LiverpoolFanSite.Data.Common;
     using LiverpoolFanSite.Data.Common.Repositories;
@@ -55,6 +56,14 @@
             services.AddRazorPages();
             services.AddDatabaseDeveloperPageExceptionFilter();
 
+            Account account = new Account(
+                this.configuration["Cloudinary:Name"],
+                this.configuration["Cloudinary:ApiKey"],
+                this.configuration["Cloudinary:ApiSecret"]);
+
+            Cloudinary cloudinary = new Cloudinary(account);
+            services.AddSingleton(cloudinary);
+
             services.AddSingleton(this.configuration);
             services.AddSignalR();
 
@@ -83,6 +92,7 @@
             services.AddTransient<ICommentsService, CommentsService>();
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<ITablesService, TablesService>();
+            services.AddTransient<ICloudinaryService, CloudinaryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
