@@ -15,11 +15,6 @@
             this.cloudinaryService = cloudinaryService;
         }
 
-        //public IActionResult All()
-        //{
-        //    return this.View();
-        //}
-
         public IActionResult UploadImage()
         {
             return this.View();

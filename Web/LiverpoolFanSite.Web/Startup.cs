@@ -110,12 +110,12 @@
 
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseStatusCodePagesWithRedirects("/Home/SiteError?errorCode={0}");
                 app.UseMigrationsEndPoint();
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseStatusCodePagesWithRedirects("/Home/SiteError?errorCode={0}");
                 app.UseHsts();
             }
 
