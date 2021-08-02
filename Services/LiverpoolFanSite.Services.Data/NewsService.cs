@@ -29,7 +29,6 @@
                 Content = input.Content,
             };
 
-            // /wwwroot/images/recipes/jhdsi-343g3h453-=g34g.jpg
             Directory.CreateDirectory($"{imagePath}/news/");
             foreach (var image in input.Images)
             {

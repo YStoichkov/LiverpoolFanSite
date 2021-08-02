@@ -72,8 +72,8 @@
 
         public IActionResult ById(int id)
         {
-            var recipe = this.newsService.GetById<SingleNewsViewModel>(id);
-            return this.View(recipe);
+            var news = this.newsService.GetById<SingleNewsViewModel>(id);
+            return this.View(news);
         }
     }
 }

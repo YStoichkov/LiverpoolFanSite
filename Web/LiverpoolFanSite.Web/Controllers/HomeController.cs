@@ -3,8 +3,6 @@
     using System.Diagnostics;
 
     using LiverpoolFanSite.Web.ViewModels;
-    using LiverpoolFanSite.Web.ViewModels.SiteError;
-    using Microsoft.AspNetCore.Diagnostics;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
