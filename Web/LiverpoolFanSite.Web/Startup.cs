@@ -1,7 +1,7 @@
 ﻿namespace LiverpoolFanSite.Web
 {
     using System.Reflection;
-
+    using System.Threading.Tasks;
     using CloudinaryDotNet;
     using LiverpoolFanSite.Data;
     using LiverpoolFanSite.Data.Common;
@@ -14,6 +14,7 @@
     using LiverpoolFanSite.Services.Messaging;
     using LiverpoolFanSite.Web.Hubs;
     using LiverpoolFanSite.Web.ViewModels;
+    using Microsoft.AspNetCore.Authentication.OAuth;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -83,16 +84,22 @@
             services.AddSignalR();
 
             // Application services
-            services.AddTransient<IEmailSender>(x => new SendGridEmailSender(this.configuration["SendGrid:ApiKey"]));
+            services.AddTransient<IEmailSender>(
+                serviceProvider => new SendGridEmailSender(this.configuration["SendGrid:ApiKey"]));
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IPlayersService, PlayersService>();
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<IPostsService, PostsService>();
-            services.AddTransient<IVotesService, VotesService>();
+            //services.AddTransient<IVotesService, VotesService>();
             services.AddTransient<ICommentsService, CommentsService>();
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<ITablesService, TablesService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
+            services.AddAuthentication().AddFacebook(facebookOptions =>
+            {
+                facebookOptions.AppId = this.configuration["FacebookLogin:AppId"];
+                facebookOptions.AppSecret = this.configuration["FacebookLogin:AppSecret"];
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

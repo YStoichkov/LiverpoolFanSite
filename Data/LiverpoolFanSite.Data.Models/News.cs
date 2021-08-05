@@ -9,7 +9,7 @@
     {
         public News()
         {
-            this.Tags = new HashSet<NewsTag>();
+            // this.Tags = new HashSet<NewsTag>();
             this.Images = new HashSet<Image>();
         }
 
@@ -22,8 +22,7 @@
 
         public virtual ApplicationUser AddedByUser { get; set; }
 
-        public virtual ICollection<NewsTag> Tags { get; set; }
-
+        // public virtual ICollection<NewsTag> Tags { get; set; }
         public virtual ICollection<Image> Images { get; set; }
     }
 }

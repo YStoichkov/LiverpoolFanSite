@@ -17,7 +17,6 @@
 
     public class SettingsServiceTests
     {
-
         [Fact]
         public async Task GetCountShouldReturnCorrectNumberUsingDbContext()
         {

@@ -11,21 +11,18 @@
 
     public class PostsController : Controller
     {
-        private readonly IPostsService postService;
+        private readonly IPostsService postsService;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly ICategoriesService categoriesService;
-        private readonly IPostsService postsService;
 
         public PostsController(
-            IPostsService postService,
+            IPostsService postsService,
             UserManager<ApplicationUser> userManager,
-            ICategoriesService categoriesService,
-            IPostsService postsService)
+            ICategoriesService categoriesService)
         {
-            this.postService = postService;
+            this.postsService = postsService;
             this.userManager = userManager;
             this.categoriesService = categoriesService;
-            this.postsService = postsService;
         }
 
         [Authorize]
@@ -49,7 +46,7 @@
             }
 
             var user = await this.userManager.GetUserAsync(this.User);
-            var postId = await this.postService.CreateAsync(inputModel.Title, inputModel.Content, inputModel.CategoryId, user.Id);
+            var postId = await this.postsService.CreateAsync(inputModel.Title, inputModel.Content, inputModel.CategoryId, user.Id);
             return this.Redirect("/Forum");
 
             // return this.RedirectToAction("ById", new { id = postId });

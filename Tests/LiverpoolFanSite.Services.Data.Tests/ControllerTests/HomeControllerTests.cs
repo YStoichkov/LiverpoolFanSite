@@ -71,5 +71,15 @@
             Assert.IsType<ViewResult>(result);
             Assert.NotNull(result);
         }
+
+        [Fact]
+        public void SiteErrorShouldreturnError()
+        {
+            var controller = new HomeController();
+
+            var result = controller.SiteError(404);
+
+            Assert.IsType<ViewResult>(result);
+        }
     }
 }

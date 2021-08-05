@@ -47,6 +47,7 @@
             repository.SaveChangesAsync().GetAwaiter().GetResult();
 
             var playerService = new PlayersService(repository);
+            AutoMapperConfig.RegisterMappings(typeof(PlayersServicesTests.MyTest).Assembly);
             var result = playerService.GetAll<PlayersServicesTests.MyTest>(1);
             Assert.Single(result);
         }
