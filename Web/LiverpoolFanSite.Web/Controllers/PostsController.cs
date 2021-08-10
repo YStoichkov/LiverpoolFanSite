@@ -48,8 +48,6 @@
             var user = await this.userManager.GetUserAsync(this.User);
             var postId = await this.postsService.CreateAsync(inputModel.Title, inputModel.Content, inputModel.CategoryId, user.Id);
             return this.Redirect("/Forum");
-
-            // return this.RedirectToAction("ById", new { id = postId });
         }
 
         public IActionResult ById(int id)

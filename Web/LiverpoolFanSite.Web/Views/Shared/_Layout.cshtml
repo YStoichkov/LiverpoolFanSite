@@ -50,6 +50,7 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-area="" asp-controller="Contacts" asp-action="Index">Contact</a></li>
                         @if (!this.User.Identity.IsAuthenticated)
                         {
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-controller="Home" asp-action="FacebookLogin">Login with <i class="fab fa-facebook-square"></i></a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-area="Identity" asp-controller="Account" asp-action="Login">Login</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" asp-area="Identity" asp-controller="Account" asp-action="Register">Register</a></li>
                         }
@@ -83,9 +84,6 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-4 text-lg-left">Copyright © Liverpool Fan Site 2021</div>
-                <div class="col-lg-4 my-3 my-lg-0">
-                    <a class="btn btn-dark btn-social mx-2" asp-area="Identity" asp-controller="Account" asp-action="Login"><i class="fab fa-facebook-f"></i></a>
-                </div>
                 <div class="col-lg-4 text-lg-right">
                     <a class="mr-3" href="#!">Privacy Policy</a>
                     <a href="#!">Terms of Use</a>

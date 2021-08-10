@@ -2,6 +2,7 @@
 {
     using System.Reflection;
     using System.Threading.Tasks;
+
     using CloudinaryDotNet;
     using LiverpoolFanSite.Data;
     using LiverpoolFanSite.Data.Common;
@@ -14,6 +15,8 @@
     using LiverpoolFanSite.Services.Messaging;
     using LiverpoolFanSite.Web.Hubs;
     using LiverpoolFanSite.Web.ViewModels;
+    using Microsoft.AspNetCore.Authentication.Cookies;
+    using Microsoft.AspNetCore.Authentication.Facebook;
     using Microsoft.AspNetCore.Authentication.OAuth;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -90,12 +93,19 @@
             services.AddTransient<IPlayersService, PlayersService>();
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<IPostsService, PostsService>();
-            //services.AddTransient<IVotesService, VotesService>();
+
+            // services.AddTransient<IVotesService, VotesService>();
             services.AddTransient<ICommentsService, CommentsService>();
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<ITablesService, TablesService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
-            services.AddAuthentication().AddFacebook(facebookOptions =>
+            services.AddAuthentication(options =>
+            {
+                options.DefaultChallengeScheme = FacebookDefaults.AuthenticationScheme;
+                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
+              .AddFacebook(facebookOptions =>
             {
                 facebookOptions.AppId = this.configuration["FacebookLogin:AppId"];
                 facebookOptions.AppSecret = this.configuration["FacebookLogin:AppSecret"];

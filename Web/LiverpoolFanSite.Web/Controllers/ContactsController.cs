@@ -47,9 +47,9 @@
             await this.contactsRepository.SaveChangesAsync();
 
             await this.emailSender.SendEmailAsync(
-               viewModel.Email,
-               viewModel.Name,
                GlobalConstants.SystemEmail,
+               GlobalConstants.SystemName,
+               viewModel.Email,
                viewModel.Title,
                viewModel.Message);
             return this.RedirectToAction("ThankYou");
@@ -59,17 +59,5 @@
         {
             return this.View();
         }
-
-        // [HttpPost]
-        // public async Task<IActionResult> SendToEmail()
-        // {
-        //    var html = new StringBuilder();
-        //    html.AppendLine("<h1>Title</h1>");
-        //    html.AppendLine("<h3>Category</h1>");
-        //    html.AppendLine("<h1>Description</h1>");
-        //    html.AppendLine("<p>Testing Sendgrid</p>");
-        //    await this.emailSender.SendEmailAsync("testing@abv.bg", "testName", "hijoha8280@geekale.com", "testing", html.ToString());
-        //    return this.Redirect("/");
-        // }
     }
 }
