@@ -1,7 +1,6 @@
 ﻿namespace LiverpoolFanSite.Web
 {
     using System.Reflection;
-    using System.Threading.Tasks;
 
     using CloudinaryDotNet;
     using LiverpoolFanSite.Data;
@@ -15,9 +14,6 @@
     using LiverpoolFanSite.Services.Messaging;
     using LiverpoolFanSite.Web.Hubs;
     using LiverpoolFanSite.Web.ViewModels;
-    using Microsoft.AspNetCore.Authentication.Cookies;
-    using Microsoft.AspNetCore.Authentication.Facebook;
-    using Microsoft.AspNetCore.Authentication.OAuth;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -99,17 +95,18 @@
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<ITablesService, TablesService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
-            services.AddAuthentication(options =>
-            {
-                options.DefaultChallengeScheme = FacebookDefaults.AuthenticationScheme;
-                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            })
-              .AddFacebook(facebookOptions =>
-            {
-                facebookOptions.AppId = this.configuration["FacebookLogin:AppId"];
-                facebookOptions.AppSecret = this.configuration["FacebookLogin:AppSecret"];
-            });
+            services.AddAuthentication();
+            //services.AddAuthentication(options =>
+            //{
+            //    options.DefaultChallengeScheme = FacebookDefaults.AuthenticationScheme;
+            //    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            //    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            //})
+            //  .AddFacebook(facebookOptions =>
+            //{
+            //    facebookOptions.AppId = this.configuration["FacebookLogin:AppId"];
+            //    facebookOptions.AppSecret = this.configuration["FacebookLogin:AppSecret"];
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
