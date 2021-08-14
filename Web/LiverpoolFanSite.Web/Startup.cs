@@ -67,13 +67,6 @@
             services.AddSingleton(this.configuration);
             services.AddSignalR();
 
-            // services.AddDistributedSqlServerCache(options =>
-            //  {
-            //    options.ConnectionString = this.configuration.GetConnectionString("DefaultConnection");
-            //    options.SchemaName = "dbo";
-            //    options.TableName = "CacheRecords";
-            // });
-
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
@@ -90,23 +83,22 @@
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<IPostsService, PostsService>();
 
-            // services.AddTransient<IVotesService, VotesService>();
             services.AddTransient<ICommentsService, CommentsService>();
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<ITablesService, TablesService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
             services.AddAuthentication();
-            //services.AddAuthentication(options =>
-            //{
+            // services.AddAuthentication(options =>
+            // {
             //    options.DefaultChallengeScheme = FacebookDefaults.AuthenticationScheme;
             //    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             //    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            //})
+            // })
             //  .AddFacebook(facebookOptions =>
-            //{
+            // {
             //    facebookOptions.AppId = this.configuration["FacebookLogin:AppId"];
             //    facebookOptions.AppSecret = this.configuration["FacebookLogin:AppSecret"];
-            //});
+            // });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -136,13 +128,6 @@
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            // {
-            //    OnPrepareResponse = context =>
-            // {
-            //    context.Context.Response.Headers.Add("Cache-Control", "no-cache , no-store");
-            //    context.Context.Response.Headers.Add("Expires", "-1");
-            // },
-            // });
             app.UseCookiePolicy();
 
             app.UseRouting();

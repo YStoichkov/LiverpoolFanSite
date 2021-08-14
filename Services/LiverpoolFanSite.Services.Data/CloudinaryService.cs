@@ -21,7 +21,11 @@
         public async Task<List<string>> GetListAsync()
         {
             var listResult = new List<string>();
-            var all = await this.cloudinary.ListResourcesAsync();
+            var all = await this.cloudinary.ListResourcesAsync(new ListResourcesByTagParams()
+            {
+                MaxResults = 500,
+                Tag = "Assets",
+            });
             if (all.StatusCode == HttpStatusCode.OK)
             {
                 foreach (var resourse in all.Resources)
