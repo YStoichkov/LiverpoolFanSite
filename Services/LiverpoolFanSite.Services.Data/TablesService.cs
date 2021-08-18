@@ -25,7 +25,7 @@
         {
             var team = new Team
             {
-               Name = input.Name,
+                Name = input.Name,
             };
 
             Directory.CreateDirectory($"{imagePath}/teams/");
@@ -56,7 +56,7 @@
         public IEnumerable<T> GetAll<T>()
         {
             IQueryable<Team> query =
-               this.teamsRepository.All().OrderByDescending(x => x.Points);
+               this.teamsRepository.All().OrderByDescending(x => x.Points).ThenBy(x => x.GoalDifference);
 
             return query.To<T>().ToList();
         }
