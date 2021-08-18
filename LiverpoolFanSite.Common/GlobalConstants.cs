@@ -2,10 +2,10 @@
 {
     public static class GlobalConstants
     {
-        public const string SystemName = "LiverpoolFanSite";
+        public const string SystemName = "Liverpool Fan Site";
 
         public const string AdministratorRoleName = "Administrator";
 
-        public const string SystemEmail = "ystoichkov@gmail.com";
+        public const string SystemEmail = "nelitoo.p22@gmail.com";
     }
 }

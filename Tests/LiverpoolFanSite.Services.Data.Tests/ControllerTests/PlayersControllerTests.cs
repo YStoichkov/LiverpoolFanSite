@@ -67,7 +67,7 @@
         }
 
         [Fact]
-        public async void CreateShouldRedirectToAction()
+        public void CreateShouldRedirectToAction()
         {
             var user = new ApplicationUser { UserName = "Test", Id = "1" };
             var mockService = new Mock<IPlayersService>();

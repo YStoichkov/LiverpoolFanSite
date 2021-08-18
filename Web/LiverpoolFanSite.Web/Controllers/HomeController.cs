@@ -1,8 +1,5 @@
 ﻿namespace LiverpoolFanSite.Web.Controllers
 {
-    using System.Diagnostics;
-
-    using LiverpoolFanSite.Web.ViewModels;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
@@ -20,13 +17,6 @@
         public IActionResult SiteError(int errorCode)
         {
             return this.View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return this.View(
-                new ErrorViewModel { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });
         }
 
         public IActionResult Anfield()

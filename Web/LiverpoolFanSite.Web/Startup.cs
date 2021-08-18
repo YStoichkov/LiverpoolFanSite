@@ -88,6 +88,7 @@
             services.AddTransient<ITablesService, TablesService>();
             services.AddTransient<ICloudinaryService, CloudinaryService>();
             services.AddAuthentication();
+
             // services.AddAuthentication(options =>
             // {
             //    options.DefaultChallengeScheme = FacebookDefaults.AuthenticationScheme;
